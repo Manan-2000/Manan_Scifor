@@ -1,0 +1,14 @@
+Q1 Mean Average Precision in object detection is a metric that tells us accurate the bounding box is. It's value is calculated using Intersection over union (IOU) which is calculated by (area of overlap)/(area of union). These areas are between the ground truth(actual position of the object) and the predicted bounding box. MAP depends on the threshold value with is determined by the IOU.
+
+Q2 RCNN -> image gets passed through selective search algorithm, 2k region proposals get wrapped to fit into the CNN model, SVM is used to calculate the class of the object and the coordinates of the bounding box.
+Fast RCNN -> image gets passed through CNN Bottleneck and the selective search algorithm simultaneously, subsampling ratio is calculated to project the outputs of selective search on the outputs of the CNN bottleneck, simple classification is used to get the classes of the object and the coordinates of the bounding box.
+Faster RCNN -> image gets passed though RPN and uses anchors to predict the class of the object and the centre coordinates of the object.
+
+Q4 YOLO - Image goes through CNN bottleneck which is already trained on other dataset(Transfer learning), then goes through kernel filters and 2 fully connected layers(for scratch), we get the output size of 7x7x30. In this each pixel gives 2 bounding box, 1st 5 of the 30 layers give the centre coordinates and the confidence score of the 1st bounding box, the next 5 give the centre coordinates and the confidence score of the 2nd bounding box.
+The remaining 20 give the conditional probabilities of 20 classes.
+
+Q5 YOLOv2 added batch normalization, darknet instead of vgg16, was able to give class probabilities of 80 instead of 20, each pixel gives 3 bounding box, input size can vary.
+
+Q8 IOU metric is calculated by (area of overlap)/(area of intersection). the area is between the ground truth that is the actual position of the object and the predicted position of the object. IOU gives a threshold value if the IOU value is greater we consider it as true positive if it's less we consider as false positive, if it's 0 we consider if false negative. IOU also provides us with a confidence score.
+
+Q9 NMS algorithm is used in YOLO to remove the redundant bounding boxes. A bounding box becomes redundant when it's value of (highest IOU)/(current IOU) is greater than the threshold so we change it to 0, if it's lower it stays same.
