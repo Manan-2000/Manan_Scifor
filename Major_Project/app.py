@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1081Ooch3MP_DBEgaT7LNvPPpTm6t8iP-
 """
 
-!pip install streamlit
+#!pip install streamlit
 
 '''import streamlit as st
 import numpy as np
@@ -166,6 +166,6 @@ if uploaded_file is not None:
     st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
     st.write("Generated Caption: ", caption)
 
-!streamlit run /content/app (1).py &>/content/logs.txt & curl https://loca.lt/mytunnelpassword
+#!streamlit run /content/app (1).py &>/content/logs.txt & curl https://loca.lt/mytunnelpassword
 
-!npx localtunnel --port 8501
+#!npx localtunnel --port 8501
