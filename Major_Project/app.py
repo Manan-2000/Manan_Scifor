@@ -7,86 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1081Ooch3MP_DBEgaT7LNvPPpTm6t8iP-
 """
 
-!pip install streamlit
-
-'''import streamlit as st
-import numpy as np
-import pandas as pd
-from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras.preprocessing.text import Tokenizer
-import pickle
-
-data = pd.read_csv("/content/captions.txt")
-
-# Load the preprocessed mapping and tokenizer
-with open("features.pkl", "rb") as f:
-    features = pickle.load(f)
-
-# Load the VGG16 model and the captioning model
-vgg_model = VGG16()
-vgg_model = Model(inputs=vgg_model.inputs, outputs=vgg_model.layers[-2].output)
-model = load_model("model.keras")
-
-
-# Convert any numpy arrays in captions to strings
-def all_captions(features):
-    return [" ".join(caption.astype(str)) for key in features for caption in features[key]]
-captions = all_captions(features)
-
-tokenizer = Tokenizer()
-tokenizer.fit_on_texts(captions)
-
-tokenizer.texts_to_sequences([captions[1]])[0]
-max_length=15
-
-def idx_to_word(integer,tokenizer):
-
-    for word, index in tokenizer.word_index.items():
-        if index==integer:
-            return word
-    return None
-
-def predict_caption(model, image, tokenizer, max_length, features):
-
-    in_text = "startseq"
-    for i in range(max_length):
-        sequence = tokenizer.texts_to_sequences([in_text])[0]
-        sequence = pad_sequences([sequence], max_length)
-
-        y_pred = model.predict([image,sequence])
-        y_pred = np.argmax(y_pred)
-
-        word = idx_to_word(y_pred, tokenizer)
-
-        if word is None:
-            break
-
-        in_text+= " " + word
-
-        if word == 'endseq':
-            break
-
-    return in_text
-
-
-# Streamlit app
-st.title("Image Caption Generator")
-
-uploaded_file = st.file_uploader("Choose an image...", type="jpg")
-
-if uploaded_file is not None:
-    image = load_img(uploaded_file, target_size=(224, 224))
-    image = img_to_array(image)
-    image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
-    image = preprocess_input(image)
-    feature = vgg_model.predict(image, verbose=0)
-
-    caption = predict_caption(model, features, tokenizer, max_length, image)
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-    st.write("Generated Caption: ", caption)'''
+#!pip install streamlit
 
 import streamlit as st
 import numpy as np
@@ -166,6 +87,6 @@ if uploaded_file is not None:
     st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
     st.write("Generated Caption: ", caption)
 
-!streamlit run /content/app (1).py &>/content/logs.txt & curl https://loca.lt/mytunnelpassword
+#!streamlit run /content/app (1).py &>/content/logs.txt & curl https://loca.lt/mytunnelpassword
 
-!npx localtunnel --port 8501
+#!npx localtunnel --port 8501
