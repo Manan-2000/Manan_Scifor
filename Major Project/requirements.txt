@@ -1,6 +1,3 @@
-flickr8k dataset
-model.keras
-features.pkl
 keras               3.4.1
 numpy               1.26.4
 session_info        1.0.0
